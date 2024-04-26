@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reddit.UserInterface", "Reddit.UserInterface\Reddit.UserInterface.csproj", "{81D9FBE2-3742-41A5-AF23-65959A13BD15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reddit.Domain", "Reddit.Domain\Reddit.Domain.csproj", "{026843D9-5863-4D82-B532-56694741754D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reddit.Infrastructure", "Reddit.Infrastructure\Reddit.Infrastructure.csproj", "{5CABB282-D552-4521-B20C-6829F478FB91}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81D9FBE2-3742-41A5-AF23-65959A13BD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81D9FBE2-3742-41A5-AF23-65959A13BD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81D9FBE2-3742-41A5-AF23-65959A13BD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81D9FBE2-3742-41A5-AF23-65959A13BD15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{026843D9-5863-4D82-B532-56694741754D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{026843D9-5863-4D82-B532-56694741754D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{026843D9-5863-4D82-B532-56694741754D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{026843D9-5863-4D82-B532-56694741754D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CABB282-D552-4521-B20C-6829F478FB91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CABB282-D552-4521-B20C-6829F478FB91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CABB282-D552-4521-B20C-6829F478FB91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CABB282-D552-4521-B20C-6829F478FB91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

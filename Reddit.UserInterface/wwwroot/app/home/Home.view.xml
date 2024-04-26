@@ -1,0 +1,8 @@
+<mvc:View
+	controllerName="reddit.app.home.Home"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true">
+	<Text text="Hello!!"/>
+</mvc:View>
