@@ -6,13 +6,20 @@
 	xmlns:tnt="sap.tnt"
 	xmlns:l="sap.ui.layout"
 	displayBlock="true">
-	<tnt:ToolPage>
+	<tnt:ToolPage contentBackgroundDesign="Transparent">
 		<tnt:header>
 			<tnt:ToolHeader>
-				<Image
-					src="{images>/svgLogo}"
-					height="4vh"
-					class="sapUiSmallMarginEnd" />
+				<HBox
+					alignItems="Center">
+					<Image
+						src="{images>/svgImagemLogo}"
+						height="5vh"
+						class="sapUiTinyMarginEnd" />
+					<Image
+						src="{images>/svgTextoLogo}"
+						height="3vh"
+						class="sapUiSmallMarginEnd" />
+				</HBox>
 			</tnt:ToolHeader>
 		</tnt:header>
 		<tnt:sideContent>
@@ -22,9 +29,11 @@
 				itemSelect=".onItemSelect">
 				<tnt:NavigationList>
 					<tnt:NavigationListItem text="Página inicial" icon="sap-icon://home" />
-					<tnt:NavigationListItem text="Popular" icon="sap-icon://business-objects-explorer" />
+					<tnt:NavigationListItem text="Popular"
+						icon="sap-icon://business-objects-explorer" />
 					<tnt:NavigationListGroup text="ASSUNTOS">
-						<tnt:NavigationListItem text="Jogos" expanded="false" icon="sap-icon://badge">
+						<tnt:NavigationListItem text="Jogos" expanded="false"
+							icon="sap-icon://badge">
 							<tnt:NavigationListItem text="Valhein" />
 							<tnt:NavigationListItem text="Genshin Impact" />
 							<tnt:NavigationListItem text="Minecraft" />
@@ -36,11 +45,76 @@
 							<tnt:NavigationListItem text="Escape from Tarkov" />
 							<tnt:NavigationListItem text="Watch Dogs: Legion" />
 						</tnt:NavigationListItem>
-						<tnt:NavigationListItem text="Esportes" icon="sap-icon://competitor" />
-						<tnt:NavigationListItem text="Negócios" icon="sap-icon://tools-opportunity" />
-						<tnt:NavigationListItem text="Cripto" icon="sap-icon://business-objects-experience" />
-						<tnt:NavigationListItem text="Televisão" icon="sap-icon://sys-monitor" />
-						<tnt:NavigationListItem text="Celebridades" icon="sap-icon://ai" />
+
+						<tnt:NavigationListItem text="Esportes" icon="sap-icon://competitor"
+							expanded="false">
+							<tnt:NavigationListItem text="NFL" />
+							<tnt:NavigationListItem text="NBA" />
+							<tnt:NavigationListItem text="Megan Anderson" />
+							<tnt:NavigationListItem text="Atlanta Hawks" />
+							<tnt:NavigationListItem text="Los Angeles Lakers" />
+							<tnt:NavigationListItem text="Boston Celtics" />
+							<tnt:NavigationListItem text="Arsenal F.C" />
+							<tnt:NavigationListItem text="Philadelphia 76ers" />
+							<tnt:NavigationListItem text="Premier League" />
+							<tnt:NavigationListItem text="UFC" />
+						</tnt:NavigationListItem>
+
+						<tnt:NavigationListItem text="Negócios" icon="sap-icon://tools-opportunity"
+							expanded="false">
+							<tnt:NavigationListItem text="GameStop" />
+							<tnt:NavigationListItem text="Moderna" />
+							<tnt:NavigationListItem text="Pfizer" />
+							<tnt:NavigationListItem text="Johnson &amp; Johnson" />
+							<tnt:NavigationListItem text="AstraZeneca" />
+							<tnt:NavigationListItem text="Walgreens" />
+							<tnt:NavigationListItem text="Best Buy" />
+							<tnt:NavigationListItem text="Novavax" />
+							<tnt:NavigationListItem text="SpaceX" />
+							<tnt:NavigationListItem text="Tesla" />
+						</tnt:NavigationListItem>
+
+						<tnt:NavigationListItem text="Cripto"
+							expanded="false"
+							icon="sap-icon://business-objects-experience">
+							<tnt:NavigationListItem text="Cardano" />
+							<tnt:NavigationListItem text="Dogecoin" />
+							<tnt:NavigationListItem text="Algorand" />
+							<tnt:NavigationListItem text="Bitcoin" />
+							<tnt:NavigationListItem text="Litecoin" />
+							<tnt:NavigationListItem text="Basic Attantion Token" />
+							<tnt:NavigationListItem text="Bitcoin Cash" />
+						</tnt:NavigationListItem>
+
+						<tnt:NavigationListItem text="Televisão"
+							expanded="false"
+							icon="sap-icon://sys-monitor">
+							<tnt:NavigationListItem text="The Real Housewives of Atlanta" />
+							<tnt:NavigationListItem text="The Bachelor" />
+							<tnt:NavigationListItem text="sister Wives" />
+							<tnt:NavigationListItem text="90 Dias para Casar" />
+							<tnt:NavigationListItem text="Wife Swap" />
+							<tnt:NavigationListItem text="The Amazing Race Autralia" />
+							<tnt:NavigationListItem text="Casamento à Primeira Vista" />
+							<tnt:NavigationListItem text="The Real Housewives of Dallas" />
+							<tnt:NavigationListItem text="Quilos Mortais" />
+							<tnt:NavigationListItem text="Last Week Tonight with John Oliver" />
+						</tnt:NavigationListItem>
+
+						<tnt:NavigationListItem text="Celebridades"
+							expanded="false"
+							icon="sap-icon://ai">
+							<tnt:NavigationListItem text="Kim Kardashian" />
+							<tnt:NavigationListItem text="Doja Cat" />
+							<tnt:NavigationListItem text="Iggy Azalea" />
+							<tnt:NavigationListItem text="Anya Taylor-Joy" />
+							<tnt:NavigationListItem text="Jamie Lee Curtis" />
+							<tnt:NavigationListItem text="Natalie Portman" />
+							<tnt:NavigationListItem text="Henry Cavil" />
+							<tnt:NavigationListItem text="Millie Bobby Brown" />
+							<tnt:NavigationListItem text="Tom Hilddleston" />
+							<tnt:NavigationListItem text="Keanu Reeves" />
+						</tnt:NavigationListItem>
 					</tnt:NavigationListGroup>
 
 					<tnt:NavigationListGroup text="RECURSOS">
@@ -51,11 +125,15 @@
 						<tnt:NavigationListItem text="Carreiras" icon="sap-icon://business-one" />
 						<tnt:NavigationListItem text="Imprensa" icon="sap-icon://doc-attachment" />
 						<tnt:NavigationListItem text="Comunidades" icon="sap-icon://group" />
-						<tnt:NavigationListItem text="O melhor do Reddit" icon="sap-icon://bar-chart" />
+						<tnt:NavigationListItem text="O melhor do Reddit"
+							icon="sap-icon://bar-chart" />
 						<tnt:NavigationListItem text="Assuntos" icon="sap-icon://business-by-design" />
-						<tnt:NavigationListItem text="Política de Conteúdo" icon="sap-icon://dimension" />
-						<tnt:NavigationListItem text="Política de Privacidade" icon="sap-icon://compare" />
-						<tnt:NavigationListItem text="Contrato de Usuário" icon="sap-icon://customer-order-entry" />
+						<tnt:NavigationListItem text="Política de Conteúdo"
+							icon="sap-icon://dimension" />
+						<tnt:NavigationListItem text="Política de Privacidade"
+							icon="sap-icon://compare" />
+						<tnt:NavigationListItem text="Contrato de Usuário"
+							icon="sap-icon://customer-order-entry" />
 					</tnt:NavigationListGroup>
 				</tnt:NavigationList>
 			</tnt:SideNavigation>
