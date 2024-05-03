@@ -3,6 +3,62 @@
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:tnt="sap.tnt"
+	xmlns:l="sap.ui.layout"
 	displayBlock="true">
-	<Text text="Hello!!"/>
+	<tnt:ToolPage>
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Image
+					src="{images>/svgLogo}"
+					height="4vh"
+					class="sapUiSmallMarginEnd" />
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation
+				expanded="true"
+				selectedKey="{dados>/selectedKey}"
+				itemSelect=".onItemSelect">
+				<tnt:NavigationList>
+					<tnt:NavigationListItem text="Página inicial" icon="sap-icon://home" />
+					<tnt:NavigationListItem text="Popular" icon="sap-icon://business-objects-explorer" />
+					<tnt:NavigationListGroup text="ASSUNTOS">
+						<tnt:NavigationListItem text="Jogos" expanded="false" icon="sap-icon://badge">
+							<tnt:NavigationListItem text="Valhein" />
+							<tnt:NavigationListItem text="Genshin Impact" />
+							<tnt:NavigationListItem text="Minecraft" />
+							<tnt:NavigationListItem text="Pokimane" />
+							<tnt:NavigationListItem text="Halo Infinite" />
+							<tnt:NavigationListItem text="Call od Duty: Warzone" />
+							<tnt:NavigationListItem text="Path of Exile" />
+							<tnt:NavigationListItem text="Hollow Knight: Silksong" />
+							<tnt:NavigationListItem text="Escape from Tarkov" />
+							<tnt:NavigationListItem text="Watch Dogs: Legion" />
+						</tnt:NavigationListItem>
+						<tnt:NavigationListItem text="Esportes" icon="sap-icon://competitor" />
+						<tnt:NavigationListItem text="Negócios" icon="sap-icon://tools-opportunity" />
+						<tnt:NavigationListItem text="Cripto" icon="sap-icon://business-objects-experience" />
+						<tnt:NavigationListItem text="Televisão" icon="sap-icon://sys-monitor" />
+						<tnt:NavigationListItem text="Celebridades" icon="sap-icon://ai" />
+					</tnt:NavigationListGroup>
+
+					<tnt:NavigationListGroup text="RECURSOS">
+						<tnt:NavigationListItem text="Sobre o Reddit" icon="sap-icon://hint" />
+						<tnt:NavigationListItem text="Anuncie" icon="sap-icon://sound" />
+						<tnt:NavigationListItem text="Ajuda" icon="sap-icon://headset" />
+						<tnt:NavigationListItem text="Blog" icon="sap-icon://e-learning" />
+						<tnt:NavigationListItem text="Carreiras" icon="sap-icon://business-one" />
+						<tnt:NavigationListItem text="Imprensa" icon="sap-icon://doc-attachment" />
+						<tnt:NavigationListItem text="Comunidades" icon="sap-icon://group" />
+						<tnt:NavigationListItem text="O melhor do Reddit" icon="sap-icon://bar-chart" />
+						<tnt:NavigationListItem text="Assuntos" icon="sap-icon://business-by-design" />
+						<tnt:NavigationListItem text="Política de Conteúdo" icon="sap-icon://dimension" />
+						<tnt:NavigationListItem text="Política de Privacidade" icon="sap-icon://compare" />
+						<tnt:NavigationListItem text="Contrato de Usuário" icon="sap-icon://customer-order-entry" />
+					</tnt:NavigationListGroup>
+				</tnt:NavigationList>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+	</tnt:ToolPage>
 </mvc:View>
