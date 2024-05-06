@@ -20,6 +20,17 @@
 						height="3vh"
 						class="sapUiSmallMarginEnd" />
 				</HBox>
+				<ToolbarSpacer />
+				<HBox alignItems="Center">
+					<SearchField width="30vw" />
+				</HBox>
+				<ToolbarSpacer />
+				<HBox alignItems="Center">
+					<Button type="Neutral" icon="sap-icon://qr-code" text="Baixar app"
+						class="sapUiTinyMarginEnd" />
+					<Button type="Emphasized" text="Entrar" class="sapUiTinyMarginEnd" />
+					<Button icon="sap-icon://menu2" />
+				</HBox>
 			</tnt:ToolHeader>
 		</tnt:header>
 		<tnt:sideContent>
