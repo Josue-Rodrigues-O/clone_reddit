@@ -1,10 +1,13 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], function (Controller) {
+    "sap/ui/core/mvc/Controller",
+    "reddit/model/formatter"
+], function (Controller, formatter) {
     "use strict";
 
     const NAMESPACE = "reddit.common.BaseController"
     return Controller.extend(NAMESPACE, {
+        formatter: formatter,
+
         /**
          * @param {string} routeName
          * @param {function} func

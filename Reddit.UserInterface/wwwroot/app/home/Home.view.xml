@@ -36,115 +36,134 @@
 		<tnt:sideContent>
 			<tnt:SideNavigation
 				expanded="true"
-				selectedKey="{dados>/selectedKey}"
+				selectedKey="{menuLateral>/selectedKey}"
 				itemSelect=".onItemSelect">
 				<tnt:NavigationList>
-					<tnt:NavigationListItem text="Página inicial" icon="sap-icon://home" />
-					<tnt:NavigationListItem text="Popular"
-						icon="sap-icon://business-objects-explorer" />
+					<tnt:NavigationListItem
+						text="{path: 'menuLateral>/paginaInicial/text', formatter: '.formatter.obterTextoI18N'}"
+						icon="{menuLateral>/paginaInicial/icon}"
+						key="{menuLateral>/paginaInicial/key}" />
+					<tnt:NavigationListItem
+						text="{path: 'menuLateral>/popular/text', formatter: '.formatter.obterTextoI18N'}"
+						icon="{menuLateral>/popular/icon}"
+						key="{menuLateral>/popular/key}" />
 					<tnt:NavigationListGroup text="ASSUNTOS">
-						<tnt:NavigationListItem text="Jogos" expanded="false"
-							icon="sap-icon://badge">
-							<tnt:NavigationListItem text="Valhein" />
-							<tnt:NavigationListItem text="Genshin Impact" />
-							<tnt:NavigationListItem text="Minecraft" />
-							<tnt:NavigationListItem text="Pokimane" />
-							<tnt:NavigationListItem text="Halo Infinite" />
-							<tnt:NavigationListItem text="Call od Duty: Warzone" />
-							<tnt:NavigationListItem text="Path of Exile" />
-							<tnt:NavigationListItem text="Hollow Knight: Silksong" />
-							<tnt:NavigationListItem text="Escape from Tarkov" />
-							<tnt:NavigationListItem text="Watch Dogs: Legion" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/jogos/text', formatter: '.formatter.obterTextoI18N'}"
+							expanded="{menuLateral>/jogos/expanded}"
+							key="{menuLateral>/jogos/key}"
+							icon="{menuLateral>/jogos/icon}"
+							items="{menuLateral>/jogos/items}">
+							<tnt:NavigationListItem
+								text="{menuLateral>text}"
+								key="{menuLateral>key}" />
 						</tnt:NavigationListItem>
 
-						<tnt:NavigationListItem text="Esportes" icon="sap-icon://competitor"
-							expanded="false">
-							<tnt:NavigationListItem text="NFL" />
-							<tnt:NavigationListItem text="NBA" />
-							<tnt:NavigationListItem text="Megan Anderson" />
-							<tnt:NavigationListItem text="Atlanta Hawks" />
-							<tnt:NavigationListItem text="Los Angeles Lakers" />
-							<tnt:NavigationListItem text="Boston Celtics" />
-							<tnt:NavigationListItem text="Arsenal F.C" />
-							<tnt:NavigationListItem text="Philadelphia 76ers" />
-							<tnt:NavigationListItem text="Premier League" />
-							<tnt:NavigationListItem text="UFC" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/esportes/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/esportes/icon}"
+							expanded="{menuLateral>/esportes/expanded}"
+							key="{menuLateral>/esportes/key}"
+							items="{menuLateral>/esportes/items}">
+							<tnt:NavigationListItem
+								text="{menuLateral>text}"
+								key="{menuLateral>key}" />
 						</tnt:NavigationListItem>
 
-						<tnt:NavigationListItem text="Negócios" icon="sap-icon://tools-opportunity"
-							expanded="false">
-							<tnt:NavigationListItem text="GameStop" />
-							<tnt:NavigationListItem text="Moderna" />
-							<tnt:NavigationListItem text="Pfizer" />
-							<tnt:NavigationListItem text="Johnson &amp; Johnson" />
-							<tnt:NavigationListItem text="AstraZeneca" />
-							<tnt:NavigationListItem text="Walgreens" />
-							<tnt:NavigationListItem text="Best Buy" />
-							<tnt:NavigationListItem text="Novavax" />
-							<tnt:NavigationListItem text="SpaceX" />
-							<tnt:NavigationListItem text="Tesla" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/negocios/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/negocios/icon}"
+							expanded="{menuLateral>/negocios/expanded}"
+							key="{menuLateral>/negocios/key}"
+							items="{menuLateral>/negocios/items}">
+							<tnt:NavigationListItem
+								text="{menuLateral>text}"
+								key="{menuLateral>key}" />
 						</tnt:NavigationListItem>
 
-						<tnt:NavigationListItem text="Cripto"
-							expanded="false"
-							icon="sap-icon://business-objects-experience">
-							<tnt:NavigationListItem text="Cardano" />
-							<tnt:NavigationListItem text="Dogecoin" />
-							<tnt:NavigationListItem text="Algorand" />
-							<tnt:NavigationListItem text="Bitcoin" />
-							<tnt:NavigationListItem text="Litecoin" />
-							<tnt:NavigationListItem text="Basic Attantion Token" />
-							<tnt:NavigationListItem text="Bitcoin Cash" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/cripto/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/cripto/icon}"
+							expanded="{menuLateral>/cripto/expanded}"
+							key="{menuLateral>/cripto/key}"
+							items="{menuLateral>/cripto/items}">
+							<tnt:NavigationListItem
+								text="{menuLateral>text}"
+								key="{menuLateral>key}" />
 						</tnt:NavigationListItem>
 
-						<tnt:NavigationListItem text="Televisão"
-							expanded="false"
-							icon="sap-icon://sys-monitor">
-							<tnt:NavigationListItem text="The Real Housewives of Atlanta" />
-							<tnt:NavigationListItem text="The Bachelor" />
-							<tnt:NavigationListItem text="sister Wives" />
-							<tnt:NavigationListItem text="90 Dias para Casar" />
-							<tnt:NavigationListItem text="Wife Swap" />
-							<tnt:NavigationListItem text="The Amazing Race Autralia" />
-							<tnt:NavigationListItem text="Casamento à Primeira Vista" />
-							<tnt:NavigationListItem text="The Real Housewives of Dallas" />
-							<tnt:NavigationListItem text="Quilos Mortais" />
-							<tnt:NavigationListItem text="Last Week Tonight with John Oliver" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/televisao/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/televisao/icon}"
+							expanded="{menuLateral>/televisao/expanded}"
+							key="{menuLateral>/televisao/key}"
+							items="{menuLateral>/televisao/items}">
+							<tnt:NavigationListItem
+								text="{menuLateral>text}"
+								key="{menuLateral>key}" />
 						</tnt:NavigationListItem>
 
-						<tnt:NavigationListItem text="Celebridades"
-							expanded="false"
-							icon="sap-icon://ai">
-							<tnt:NavigationListItem text="Kim Kardashian" />
-							<tnt:NavigationListItem text="Doja Cat" />
-							<tnt:NavigationListItem text="Iggy Azalea" />
-							<tnt:NavigationListItem text="Anya Taylor-Joy" />
-							<tnt:NavigationListItem text="Jamie Lee Curtis" />
-							<tnt:NavigationListItem text="Natalie Portman" />
-							<tnt:NavigationListItem text="Henry Cavil" />
-							<tnt:NavigationListItem text="Millie Bobby Brown" />
-							<tnt:NavigationListItem text="Tom Hilddleston" />
-							<tnt:NavigationListItem text="Keanu Reeves" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/celebridades/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/celebridades/icon}"
+							expanded="{menuLateral>/celebridades/expanded}"
+							key="{menuLateral>/celebridades/key}"
+							items="{menuLateral>/celebridades/items}">
+							<tnt:NavigationListItem
+								text="{menuLateral>text}"
+								key="{menuLateral>key}" />
 						</tnt:NavigationListItem>
 					</tnt:NavigationListGroup>
 
 					<tnt:NavigationListGroup text="RECURSOS">
-						<tnt:NavigationListItem text="Sobre o Reddit" icon="sap-icon://hint" />
-						<tnt:NavigationListItem text="Anuncie" icon="sap-icon://sound" />
-						<tnt:NavigationListItem text="Ajuda" icon="sap-icon://headset" />
-						<tnt:NavigationListItem text="Blog" icon="sap-icon://e-learning" />
-						<tnt:NavigationListItem text="Carreiras" icon="sap-icon://business-one" />
-						<tnt:NavigationListItem text="Imprensa" icon="sap-icon://doc-attachment" />
-						<tnt:NavigationListItem text="Comunidades" icon="sap-icon://group" />
-						<tnt:NavigationListItem text="O melhor do Reddit"
-							icon="sap-icon://bar-chart" />
-						<tnt:NavigationListItem text="Assuntos" icon="sap-icon://business-by-design" />
-						<tnt:NavigationListItem text="Política de Conteúdo"
-							icon="sap-icon://dimension" />
-						<tnt:NavigationListItem text="Política de Privacidade"
-							icon="sap-icon://compare" />
-						<tnt:NavigationListItem text="Contrato de Usuário"
-							icon="sap-icon://customer-order-entry" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/sobreOReddit/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/sobreOReddit/icon}"
+							key="{menuLateral>/sobreOReddit/key}" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/anuncie/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/anuncie/icon}"
+							key="{menuLateral>/anuncie/key}" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/ajuda/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/ajuda/icon}"
+							key="{menuLateral>/ajuda/key}" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/blog/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/blog/icon}"
+							key="{menuLateral>/blog/key}" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/carreiras/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/carreiras/icon}"
+							key="{menuLateral>/carreiras/key}" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/imprensa/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/imprensa/icon}"
+							key="{menuLateral>/imprensa/key}" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/comunidades/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/comunidades/icon}"
+							key="{menuLateral>/comunidades/key}" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/oMelhorDoReddit/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/oMelhorDoReddit/icon}"
+							key="{menuLateral>/oMelhorDoReddit/key}" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/assuntos/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/assuntos/icon}"
+							key="{menuLateral>/assuntos/key}" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/politicaDeConteudo/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/politicaDeConteudo/icon}"
+							key="{menuLateral>/politicaDeConteudo/key}" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/politicaDePrivacidade/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/politicaDePrivacidade/icon}"
+							key="{menuLateral>/politicaDePrivacidade/key}" />
+						<tnt:NavigationListItem
+							text="{path: 'menuLateral>/contratoDeUsuario/text', formatter: '.formatter.obterTextoI18N'}"
+							icon="{menuLateral>/contratoDeUsuario/icon}"
+							key="{menuLateral>/contratoDeUsuario/key}" />
 					</tnt:NavigationListGroup>
 				</tnt:NavigationList>
 			</tnt:SideNavigation>
