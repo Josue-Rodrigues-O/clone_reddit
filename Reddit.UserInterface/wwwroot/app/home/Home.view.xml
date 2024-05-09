@@ -47,7 +47,8 @@
 						text="{path: 'menuLateral>/popular/text', formatter: '.formatter.obterTextoI18N'}"
 						icon="{menuLateral>/popular/icon}"
 						key="{menuLateral>/popular/key}" />
-					<tnt:NavigationListGroup text="ASSUNTOS">
+
+					<tnt:NavigationListGroup text="{i18n>MenuLateral.Grupo.Assuntos}">
 						<tnt:NavigationListItem
 							text="{path: 'menuLateral>/jogos/text', formatter: '.formatter.obterTextoI18N'}"
 							expanded="{menuLateral>/jogos/expanded}"
@@ -115,7 +116,7 @@
 						</tnt:NavigationListItem>
 					</tnt:NavigationListGroup>
 
-					<tnt:NavigationListGroup text="RECURSOS">
+					<tnt:NavigationListGroup text="{i18n>MenuLateral.Grupo.Recursos}">
 						<tnt:NavigationListItem
 							text="{path: 'menuLateral>/sobreOReddit/text', formatter: '.formatter.obterTextoI18N'}"
 							icon="{menuLateral>/sobreOReddit/icon}"
@@ -168,5 +169,27 @@
 				</tnt:NavigationList>
 			</tnt:SideNavigation>
 		</tnt:sideContent>
+		<tnt:mainContents>
+			<NavContainer id="idConteudoPrincipal" initialPage="paginaInicial">
+				<pages>
+					<ScrollContainer
+						id="paginaInicial"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+						class="sapUiContentPadding">
+						<Text text="PaginaInicial" />
+					</ScrollContainer>
+					<ScrollContainer
+						id="popular"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+						class="sapUiContentPadding">
+						<Text text="popular" />
+					</ScrollContainer>
+				</pages>
+			</NavContainer>
+		</tnt:mainContents>
 	</tnt:ToolPage>
 </mvc:View>

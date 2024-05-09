@@ -19,6 +19,13 @@ sap.ui.define([
             this._definirDadosMenuLateral()
         },
 
+        onItemSelect: function (evneto) {
+            const parametroItem = "item";
+            const idConteudoPrincipal = "idConteudoPrincipal";
+			var item = evneto.getParameter(parametroItem);
+			this.byId(idConteudoPrincipal).to(this.getView().createId(item.getKey()));
+		},
+
         _definirDadosImagens: function () {
             const svgImagemLogo = sap.ui.require.toUrl("reddit/resources/images/imagem_logo.svg");
             const svgTextoLogo = sap.ui.require.toUrl("reddit/resources/images/texto_logo.svg");
@@ -26,7 +33,7 @@ sap.ui.define([
                 svgImagemLogo: svgImagemLogo,
                 svgTextoLogo: svgTextoLogo
             }
-            this.getView().setModel(new JSONModel(model), 'images');
+            this.getView().setModel(new JSONModel(model), "images");
         },
 
         _definirDadosMenuLateral: function () {
@@ -376,7 +383,7 @@ sap.ui.define([
                 }
             }
 
-            this.getView().setModel(new JSONModel(model), 'menuLateral')
+            this.getView().setModel(new JSONModel(model), "menuLateral")
         }
     });
 });
