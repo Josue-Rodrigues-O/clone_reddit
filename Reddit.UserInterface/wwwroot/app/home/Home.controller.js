@@ -17,6 +17,7 @@ sap.ui.define([
         _aoCoincidirRota: function () {
             this._definirDadosImagens()
             this._definirDadosMenuLateral()
+            this._definirDadosComunidadesPopulares()
         },
 
         onItemSelect: function (evneto) {
@@ -29,9 +30,11 @@ sap.ui.define([
         _definirDadosImagens: function () {
             const svgImagemLogo = sap.ui.require.toUrl("reddit/resources/images/imagem_logo.svg");
             const svgTextoLogo = sap.ui.require.toUrl("reddit/resources/images/texto_logo.svg");
+            const pngBannerTeste = sap.ui.require.toUrl("reddit/resources/images/banner_teste.jpg");
             const model = {
                 svgImagemLogo: svgImagemLogo,
-                svgTextoLogo: svgTextoLogo
+                svgTextoLogo: svgTextoLogo,
+                pngBannerTeste: pngBannerTeste
             }
             this.getView().setModel(new JSONModel(model), "images");
         },
@@ -384,6 +387,37 @@ sap.ui.define([
             }
 
             this.getView().setModel(new JSONModel(model), "menuLateral")
+        },
+
+        _definirDadosComunidadesPopulares: function () {
+            const model = [
+                {
+                    logo: 'https://styles.redditmedia.com/t5_2qh1i/styles/communityIcon_p6kb2m6b185b1.png',
+                    nome: 'r/AskReddit',
+                    numeroDeMembros: '3.046.177 membros',
+                },
+                {
+                    logo: 'https://styles.redditmedia.com/t5_2rfxx/styles/communityIcon_9yj66cjf8oq61.png',
+                    nome: 'r/leagueoflegends',
+                    numeroDeMembros: '3.046.177 membros',
+                },
+                {
+                    logo: 'https://styles.redditmedia.com/t5_2xinb/styles/communityIcon_qqtvyeb0bj221.png',
+                    nome: 'r/OutOfTheLoop',
+                    numeroDeMembros: '3.046.177 membros',
+                },
+                {
+                    logo: 'https://styles.redditmedia.com/t5_388p4/styles/communityIcon_1xjv62tivxy61.png',
+                    nome: 'r/discordapp',
+                    numeroDeMembros: '3.046.177 membros',
+                },
+                {
+                    logo: 'https://styles.redditmedia.com/t5_2s0fe/styles/communityIcon_2cbkzwfs6kr21.png',
+                    nome: 'r/Twitch',
+                    numeroDeMembros: '3.046.177 membros',
+                },
+            ]
+            this.getView().setModel(new JSONModel(model), "ComunidadesPopulares")
         }
     });
 });

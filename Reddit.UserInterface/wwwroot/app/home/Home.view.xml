@@ -172,22 +172,8 @@
 		<tnt:mainContents>
 			<NavContainer id="idConteudoPrincipal" initialPage="paginaInicial">
 				<pages>
-					<ScrollContainer
-						id="paginaInicial"
-						horizontal="false"
-						vertical="true"
-						height="100%"
-						class="sapUiContentPadding">
-						<Text text="PaginaInicial" />
-					</ScrollContainer>
-					<ScrollContainer
-						id="popular"
-						horizontal="false"
-						vertical="true"
-						height="100%"
-						class="sapUiContentPadding">
-						<Text text="popular" />
-					</ScrollContainer>
+					<mvc:XMLView id="paginaInicial" viewName="reddit.app.home.pages.paginaInicial.PaginaInicial"/>
+					<mvc:XMLView id="popular" viewName="reddit.app.home.pages.popular.Popular"/>
 				</pages>
 			</NavContainer>
 		</tnt:mainContents>

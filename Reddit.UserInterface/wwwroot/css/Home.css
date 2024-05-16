@@ -1,0 +1,14 @@
+.genericTile {
+	color: #fff;
+	text-shadow: -5px -2px 10px black;
+}
+
+
+.title {
+	color: white;
+}
+
+.painelFixo {
+	top: 10px; /* altura que vai parar antes do topo */
+    position: sticky;
+}
