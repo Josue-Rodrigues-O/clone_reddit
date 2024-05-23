@@ -9,6 +9,6 @@
 }
 
 .painelFixo {
-	top: 10px; /* altura que vai parar antes do topo */
+	top: 10px;
     position: sticky;
 }

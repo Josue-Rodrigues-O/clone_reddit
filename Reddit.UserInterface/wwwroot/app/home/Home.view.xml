@@ -29,7 +29,7 @@
 					<Button type="Neutral" icon="sap-icon://qr-code" text="Baixar app"
 						class="sapUiTinyMarginEnd" />
 					<Button type="Emphasized" text="Entrar" class="sapUiTinyMarginEnd" />
-					<Button icon="sap-icon://menu2" />
+					<Button icon="sap-icon://overflow" />
 				</HBox>
 			</tnt:ToolHeader>
 		</tnt:header>
