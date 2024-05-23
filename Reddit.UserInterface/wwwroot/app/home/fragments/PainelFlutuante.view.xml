@@ -1,0 +1,26 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:cards="sap.f.cards"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Panel
+        width="20rem"
+        class="sapUiSmallMarginTop sapUiSmallMarginBegin painelFixo">
+        <List
+            items="{ComunidadesPopulares>/}">
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Text text="COMUNIDADES POPULARES" />
+                </OverflowToolbar>
+            </headerToolbar>
+            <StandardListItem
+                title="{ComunidadesPopulares>nome}"
+                description="{ComunidadesPopulares>numeroDeMembros}"
+                icon="{ComunidadesPopulares>logo}"
+                type="Navigation" />
+        </List>
+    </Panel>
+</mvc:View>

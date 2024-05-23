@@ -1,117 +1,19 @@
 <mvc:View
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
-    xmlns:f="sap.f"
-    xmlns:l="sap.ui.layout"
-    xmlns:cards="sap.f.cards"
-    xmlns:grid="sap.ui.layout.cssgrid"
     xmlns:mvc="sap.ui.core.mvc">
     <ScrollContainer
-        height="100%"
         horizontal="false"
         vertical="true"
+        height="100%"
         class="sapUiContentPadding">
-        <Carousel
-            loop="true"
-            backgroundDesign="Transparent"
-            pageIndicatorBackgroundDesign="Transparent" showPageIndicator="false">
-            <customLayout>
-                <CarouselLayout visiblePagesCount="4" />
-            </customLayout>
-
-            <GenericTile
-                frameType="TwoThirds"
-                class="genericTile"
-                width="100%"
-                backgroundImage="{images>/pngBannerTeste}">
-                <TileContent footerColor="None" footer="r/Games e muito mais">
-                    <VBox>
-                        <Title class="title" titleStyle="H4" text="Playstation new CEO" />
-                        <Text wrapping="false" class="title"
-                            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
-                    </VBox>
-                </TileContent>
-            </GenericTile>
-
-            <GenericTile
-                frameType="TwoThirds"
-                class="genericTile"
-                width="100%"
-                backgroundImage="{images>/pngBannerTeste}">
-                <TileContent footerColor="None" footer="r/Games e muito mais">
-                    <VBox>
-                        <Title class="title" titleStyle="H4" text="Playstation new CEO" />
-                        <Text wrapping="false" class="title"
-                            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
-                    </VBox>
-                </TileContent>
-            </GenericTile>
-
-            <GenericTile
-                frameType="TwoThirds"
-                class="genericTile"
-                width="100%"
-                backgroundImage="{images>/pngBannerTeste}">
-                <TileContent footerColor="None" footer="r/Games e muito mais">
-                    <VBox>
-                        <Title class="title" titleStyle="H4" text="Playstation new CEO" />
-                        <Text wrapping="false" class="title"
-                            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
-                    </VBox>
-                </TileContent>
-            </GenericTile>
-
-            <GenericTile
-                frameType="TwoThirds"
-                class="genericTile"
-                width="100%"
-                backgroundImage="{images>/pngBannerTeste}">
-                <TileContent footerColor="None" footer="r/Games e muito mais">
-                    <VBox>
-                        <Title class="title" titleStyle="H4" text="Playstation new CEO" />
-                        <Text wrapping="false" class="title"
-                            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
-                    </VBox>
-                </TileContent>
-            </GenericTile>
-
-            <GenericTile
-                frameType="TwoThirds"
-                class="genericTile"
-                width="100%"
-                backgroundImage="{images>/pngBannerTeste}">
-                <TileContent footerColor="None" footer="r/Games e muito mais">
-                    <VBox>
-                        <Title class="title" titleStyle="H4" text="Playstation new CEO" />
-                        <Text wrapping="false" class="title"
-                            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
-                    </VBox>
-                </TileContent>
-            </GenericTile>
-
-        </Carousel>
         <HBox
-            class="sapUiSmallMarginTop"
             justifyContent="SpaceBetween">
             <Panel
                 backgroundDesign="Transparent"
                 class="painelFixo">
                 <HBox>
                     <MenuButton type="Transparent" text="Em destaque">
-                        <menu>
-                            <Menu>
-                                <MenuItem text="Ordenar por" />
-                                <MenuItem text="Melhores" />
-                                <MenuItem text="Em destaque" />
-                                <MenuItem text="Mais novos" />
-                                <MenuItem text="Mais votados" />
-                                <MenuItem text="Mais votados" />
-                                <MenuItem text="Em ascensão" />
-                            </Menu>
-                        </menu>
-                    </MenuButton>
-
-                    <MenuButton type="Transparent" text="Todos os lugares">
                         <menu>
                             <Menu>
                                 <MenuItem text="Ordenar por" />
@@ -134,99 +36,9 @@
                         </menu>
                     </MenuButton>
                 </HBox>
-                <!-- <List
-                    backgroundDesign="Transparent"
-                    items="{posts>/}">
-                    <FeedListItem
-                        type="Active"
-                        sender="{posts>sender}"
-                        icon="{posts>icon}"
-                        info="{posts>info}"
-                        timestamp="{posts>timestamp}"
-                        text="{posts>text}"
-                        convertLinksToAnchorTags="All"
-                        actions="{path: 'posts>actions'}">
-                        <FeedListItemAction text="{posts>Text}" icon="{posts>Icon}"
-                            key="{posts>Key}" />
-                    </FeedListItem>
-                </List> -->
-                <f:GridList
-                    id="gridList"
-                    items="{posts>/}">
-                    <f:customLayout>
-                        <grid:GridBoxLayout boxMinWidth="100%" />
-                        <grid:ResponsiveColumnLayout />
-                    </f:customLayout>
-
-                    <f:GridListItem
-                        class="sapUiSmallMarginBottom">
-                        <f:layoutData>
-                            <grid:ResponsiveColumnItemLayoutData columns="12" rows="1" />
-                        </f:layoutData>
-                        <VBox class="sapUiSmallMargin">
-                            <layoutData>
-                                <FlexItemData shrinkFactor="0" />
-                            </layoutData>
-                            <VBox>
-                                <HBox
-                                    justifyContent="SpaceBetween"
-                                    class="sapUiTinyMarginBottom"
-                                    alignItems="Center">
-                                    <HBox
-                                        alignItems="Center">
-                                        <Avatar
-                                            class="sapUiSmallMarginEnd"
-                                            src="{posts>avatar}"
-                                            displaySize="XS"
-                                            showBorder="true"
-                                            press="onPress" />
-                                        <Text text="{posts>sender} - há {posts>time}h" />
-                                    </HBox>
-                                    <HBox>
-                                        <Button class="sapUiTinyMarginEnd" type="Emphasized"
-                                            text="Unir-se" />
-                                        <Button type="Transparent" icon="sap-icon://overflow" />
-                                    </HBox>
-                                </HBox>
-                                <Title class="sapUiTinyMarginBottom" text="{posts>title}"
-                                    wrapping="true" />
-                                <FormattedText htmlText="{posts>text}" />
-                            </VBox>
-                            <HBox
-                                alignItems="Center">
-                                <Button type="Transparent" icon="sap-icon://thumb-up"
-                                    text="{posts>numbersLikes}" />
-                                <Button class="sapUiTinyMarginEnd" type="Transparent"
-                                    icon="sap-icon://thumb-down" />
-                                <Button type="Transparent" class="sapUiTinyMarginEnd"
-                                    icon="sap-icon://post" text="{posts>numberComments}" />
-                                <Button type="Transparent" class="sapUiTinyMarginEnd"
-                                    icon="https://www.redditstatic.com/marketplace-assets/v1/core/awards/take_my_coins_v1_40.png"
-                                    text="1" />
-                                <Button type="Transparent" icon="sap-icon://upload"
-                                    text="Compartilhar" />
-                            </HBox>
-                        </VBox>
-                    </f:GridListItem>
-                </f:GridList>
+                <mvc:XMLView viewName="reddit.app.home.fragments.MainContent" />
             </Panel>
-            <Panel
-                width="20rem"
-                class="sapUiSmallMarginTop sapUiSmallMarginBegin painelFixo">
-                <List
-                    items="{ComunidadesPopulares>/}">
-                    <headerToolbar>
-                        <OverflowToolbar>
-                            <Text text="COMUNIDADES POPULARES" />
-                        </OverflowToolbar>
-                    </headerToolbar>
-                    <StandardListItem
-                        title="{ComunidadesPopulares>nome}"
-                        description="{ComunidadesPopulares>numeroDeMembros}"
-                        icon="{ComunidadesPopulares>logo}"
-                        type="Navigation" />
-                </List>
-            </Panel>
+            <mvc:XMLView class="painelFixo" id="popular" viewName="reddit.app.home.fragments.PainelFlutuante"/>
         </HBox>
     </ScrollContainer>
 </mvc:View>
