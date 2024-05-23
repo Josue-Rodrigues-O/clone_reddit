@@ -54,7 +54,9 @@
 							expanded="{menuLateral>/jogos/expanded}"
 							key="{menuLateral>/jogos/key}"
 							icon="{menuLateral>/jogos/icon}"
-							items="{menuLateral>/jogos/items}">
+							items="{menuLateral>/jogos/items}"
+							selectable="false"
+							select="aoClicarNaAbaComSubMenus">
 							<tnt:NavigationListItem
 								text="{menuLateral>text}"
 								key="{menuLateral>key}" />
@@ -65,7 +67,9 @@
 							icon="{menuLateral>/esportes/icon}"
 							expanded="{menuLateral>/esportes/expanded}"
 							key="{menuLateral>/esportes/key}"
-							items="{menuLateral>/esportes/items}">
+							items="{menuLateral>/esportes/items}"
+							selectable="false"
+							select="aoClicarNaAbaComSubMenus">
 							<tnt:NavigationListItem
 								text="{menuLateral>text}"
 								key="{menuLateral>key}" />
@@ -76,7 +80,9 @@
 							icon="{menuLateral>/negocios/icon}"
 							expanded="{menuLateral>/negocios/expanded}"
 							key="{menuLateral>/negocios/key}"
-							items="{menuLateral>/negocios/items}">
+							items="{menuLateral>/negocios/items}"
+							selectable="false"
+							select="aoClicarNaAbaComSubMenus">
 							<tnt:NavigationListItem
 								text="{menuLateral>text}"
 								key="{menuLateral>key}" />
@@ -87,7 +93,9 @@
 							icon="{menuLateral>/cripto/icon}"
 							expanded="{menuLateral>/cripto/expanded}"
 							key="{menuLateral>/cripto/key}"
-							items="{menuLateral>/cripto/items}">
+							items="{menuLateral>/cripto/items}"
+							selectable="false"
+							select="aoClicarNaAbaComSubMenus">
 							<tnt:NavigationListItem
 								text="{menuLateral>text}"
 								key="{menuLateral>key}" />
@@ -98,7 +106,9 @@
 							icon="{menuLateral>/televisao/icon}"
 							expanded="{menuLateral>/televisao/expanded}"
 							key="{menuLateral>/televisao/key}"
-							items="{menuLateral>/televisao/items}">
+							items="{menuLateral>/televisao/items}"
+							selectable="false"
+							select="aoClicarNaAbaComSubMenus">
 							<tnt:NavigationListItem
 								text="{menuLateral>text}"
 								key="{menuLateral>key}" />
@@ -109,7 +119,9 @@
 							icon="{menuLateral>/celebridades/icon}"
 							expanded="{menuLateral>/celebridades/expanded}"
 							key="{menuLateral>/celebridades/key}"
-							items="{menuLateral>/celebridades/items}">
+							items="{menuLateral>/celebridades/items}"
+							selectable="false"
+							select="aoClicarNaAbaComSubMenus">
 							<tnt:NavigationListItem
 								text="{menuLateral>text}"
 								key="{menuLateral>key}" />
@@ -172,8 +184,9 @@
 		<tnt:mainContents>
 			<NavContainer id="idConteudoPrincipal" initialPage="paginaInicial">
 				<pages>
-					<mvc:XMLView id="paginaInicial" viewName="reddit.app.home.pages.paginaInicial.PaginaInicial"/>
-					<mvc:XMLView id="popular" viewName="reddit.app.home.pages.popular.Popular"/>
+					<mvc:XMLView id="paginaInicial"
+						viewName="reddit.app.home.pages.paginaInicial.PaginaInicial" />
+					<mvc:XMLView id="popular" viewName="reddit.app.home.pages.popular.Popular" />
 				</pages>
 			</NavContainer>
 		</tnt:mainContents>

@@ -134,7 +134,7 @@
                         </menu>
                     </MenuButton>
                 </HBox>
-                <mvc:XMLView viewName="reddit.app.home.fragments.MainContent" />
+                <mvc:XMLView viewName="reddit.app.home.fragments.Postagens" />
             </Panel>
             <mvc:XMLView class="painelFixo" id="popular" viewName="reddit.app.home.fragments.PainelFlutuante"/>
         </HBox>

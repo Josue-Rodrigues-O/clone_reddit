@@ -586,6 +586,11 @@ sap.ui.define([
             ]
 
             this.getView().setModel(new JSONModel(model), "posts")
+        },
+
+        aoClicarNaAbaComSubMenus: function (evento) {
+            var novoValor = !evento.getParameter('item').getExpanded()
+            evento.getParameter('item').setExpanded(novoValor)
         }
     });
 });
