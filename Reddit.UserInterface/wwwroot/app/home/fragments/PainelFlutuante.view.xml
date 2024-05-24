@@ -10,16 +10,16 @@
         width="20rem"
         class="sapUiSmallMarginTop sapUiSmallMarginBegin painelFixo">
         <List
-            items="{ComunidadesPopulares>/}">
+            items="{comunidadesPopulares>/}">
             <headerToolbar>
                 <OverflowToolbar>
                     <Text text="COMUNIDADES POPULARES" />
                 </OverflowToolbar>
             </headerToolbar>
             <StandardListItem
-                title="{ComunidadesPopulares>nome}"
-                description="{ComunidadesPopulares>numeroDeMembros}"
-                icon="{ComunidadesPopulares>logo}"
+                title="{comunidadesPopulares>nome}"
+                description="{comunidadesPopulares>numeroDeMembros}"
+                icon="{comunidadesPopulares>logo}"
                 type="Navigation" />
         </List>
     </Panel>

@@ -29,5 +29,23 @@ sap.ui.define([
                 .getOwnerComponent()
                 .getRouter();
         },
+
+        /**
+         *
+         * @param {string} nome
+         * @param {sap.ui.model.json.JSONModel} modelo
+         * @returns {sap.ui.model.json.JSONModel}
+         */
+        modelo: function (nome, modelo) {
+            let view = this.getView();
+            if (modelo) view.setModel(modelo, nome);
+            return view.getModel(nome);
+        },
+
+        obterTextoI18N(chaveI18N) {
+            const MODELO_I18N = 'i18n';
+            const recursos_i18n = this.getOwnerComponent().getModel(MODELO_I18N).getResourceBundle();
+            return recursos_i18n.getText(chaveI18N);
+        }, 
     });
 });

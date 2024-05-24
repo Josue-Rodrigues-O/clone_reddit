@@ -26,9 +26,9 @@
 				</HBox>
 				<ToolbarSpacer />
 				<HBox alignItems="Center">
-					<Button type="Neutral" icon="sap-icon://qr-code" text="Baixar app"
+					<Button type="Neutral" icon="sap-icon://qr-code" text="{i18n>BarraSuperior.BaixarApp}"
 						class="sapUiTinyMarginEnd" />
-					<Button type="Emphasized" text="Entrar" class="sapUiTinyMarginEnd" />
+					<Button type="Emphasized" text="{i18n>BarraSuperior.Entrar}" class="sapUiTinyMarginEnd" />
 					<Button icon="sap-icon://overflow" />
 				</HBox>
 			</tnt:ToolHeader>
@@ -37,7 +37,7 @@
 			<tnt:SideNavigation
 				expanded="true"
 				selectedKey="{menuLateral>/selectedKey}"
-				itemSelect=".onItemSelect">
+				itemSelect=".aoSelecionarUmItemDoMenuLateral">
 				<tnt:NavigationList>
 					<tnt:NavigationListItem
 						text="{path: 'menuLateral>/paginaInicial/text', formatter: '.formatter.obterTextoI18N'}"
@@ -182,11 +182,14 @@
 			</tnt:SideNavigation>
 		</tnt:sideContent>
 		<tnt:mainContents>
-			<NavContainer id="idConteudoPrincipal" initialPage="paginaInicial">
+			<NavContainer id="idConteudoPrincipal" initialPage="popular">
 				<pages>
-					<mvc:XMLView id="paginaInicial"
+					<mvc:XMLView
+						id="paginaInicial"
 						viewName="reddit.app.home.pages.paginaInicial.PaginaInicial" />
-					<mvc:XMLView id="popular" viewName="reddit.app.home.pages.popular.Popular" />
+					<mvc:XMLView
+						id="popular"
+						viewName="reddit.app.home.pages.popular.Popular" />
 				</pages>
 			</NavContainer>
 		</tnt:mainContents>

@@ -2,47 +2,93 @@ sap.ui.define([
     "reddit/common/BaseController",
     "sap/ui/model/json/JSONModel",
     "sap/m/Menu",
-    "sap/m/MenuItem"
-], function (BaseControler, JSONModel, Menu, MenuItem) {
+    "sap/m/MenuItem",
+    "reddit/repositories/RepositorioPosts",
+    "reddit/repositories/RepositorioComunidades"
+], function (BaseControler, JSONModel, Menu, MenuItem, RepositorioPosts, RepositorioComunidades) {
     "use strict";
 
+    const PARAMETRO_ITEM = "item";
     const NAMESPACE = "reddit.app.home.Home";
 
     return BaseControler.extend(NAMESPACE, {
+        //#region Eventos
         onInit: function () {
             const rotaListagem = "home";
             this.vincularRota(rotaListagem, this._aoCoincidirRota);
         },
 
         _aoCoincidirRota: function () {
-            this._definirDadosImagens()
-            this._definirDadosMenuLateral()
-            this._definirDadosComunidadesPopulares()
-            this._definirDadosPosts()
+            this._definirDadosImagensDoSite();
+            this._definirDadosMenuLateral();
+            this._definirDadosComunidades();
+            this._definirDadosPosts();
+            this._definirDadosDaTela();
         },
 
-        onItemSelect: function (evneto) {
-            const parametroItem = "item";
+        aoSelecionarUmItemDoMenuLateral: function (evento) {
             const idConteudoPrincipal = "idConteudoPrincipal";
-            var item = evneto.getParameter(parametroItem);
+            var item = evento.getParameter(PARAMETRO_ITEM);
             this.byId(idConteudoPrincipal).to(this.getView().createId(item.getKey()));
         },
 
-        _definirDadosImagens: function () {
-            const svgImagemLogo = sap.ui.require.toUrl("reddit/resources/images/imagem_logo.svg");
-            const svgTextoLogo = sap.ui.require.toUrl("reddit/resources/images/texto_logo.svg");
-            const pngBannerTeste = sap.ui.require.toUrl("reddit/resources/images/banner_teste.jpg");
-            const model = {
-                svgImagemLogo: svgImagemLogo,
-                svgTextoLogo: svgTextoLogo,
-                pngBannerTeste: pngBannerTeste
-            }
-            this.getView().setModel(new JSONModel(model), "images");
+        aoClicarNaAbaComSubMenus: function (evento) {
+            var novoValor = !evento.getParameter(PARAMETRO_ITEM).getExpanded();
+            evento.getParameter(PARAMETRO_ITEM).setExpanded(novoValor);
+        },
+        //#endregion
+
+        //#region Modelos
+        _modeloPosts: function (dados) {
+            return dados
+                ? this.modelo("posts", new JSONModel(dados))
+                : this.modelo("posts");
+        },
+
+        _modeloImagensDoSite: function (dados) {
+            return dados
+                ? this.modelo("images", new JSONModel(dados))
+                : this.modelo("images");
+        },
+
+        _modeloMenuLateral: function (dados) {
+            return dados
+                ? this.modelo("menuLateral", new JSONModel(dados))
+                : this.modelo("menuLateral");
+        },
+
+        _modeloComunidadesPopulares: function (dados) {
+            return dados
+                ? this.modelo("comunidadesPopulares", new JSONModel(dados))
+                : this.modelo("comunidadesPopulares");
+        },
+
+        _modeloDadosDaTela: function (dados) {
+            return dados
+                ? this.modelo("dadosDaTela", new JSONModel(dados))
+                : this.modelo("dadosDaTela");
+        },
+        //#endregion
+
+        //#region Setters
+        _definirDadosPosts: function (assunto, ordem, localizacao) {
+            const dados = this._obterPosts(assunto, ordem, localizacao);
+            this._modeloPosts(dados);
+        },
+
+        _definirDadosImagensDoSite: function () {
+            const dados = {
+                svgImagemLogo: sap.ui.require.toUrl("reddit/resources/images/imagem_logo.svg"),
+                svgTextoLogo: sap.ui.require.toUrl("reddit/resources/images/texto_logo.svg"),
+                pngBannerTeste: sap.ui.require.toUrl("reddit/resources/images/banner_teste.jpg")
+            };
+
+            this._modeloImagensDoSite(dados);
         },
 
         _definirDadosMenuLateral: function () {
-            const model = {
-                selectedKey: "paginaInicial",
+            const dados = {
+                selectedKey: "popular",
                 paginaInicial: {
                     key: "paginaInicial",
                     text: "MenuLateral.PaginaInicial",
@@ -385,212 +431,39 @@ sap.ui.define([
                     text: "MenuLateral.ContratoDeUsuario",
                     icon: "sap-icon://customer-order-entry"
                 }
-            }
-
-            this.getView().setModel(new JSONModel(model), "menuLateral")
+            };
+            this._modeloMenuLateral(dados);
         },
 
-        _definirDadosComunidadesPopulares: function () {
-            const model = [
-                {
-                    logo: 'https://styles.redditmedia.com/t5_2qh1i/styles/communityIcon_p6kb2m6b185b1.png',
-                    nome: 'r/AskReddit',
-                    numeroDeMembros: '3.046.177 membros',
-                },
-                {
-                    logo: 'https://styles.redditmedia.com/t5_2rfxx/styles/communityIcon_9yj66cjf8oq61.png',
-                    nome: 'r/leagueoflegends',
-                    numeroDeMembros: '3.046.177 membros',
-                },
-                {
-                    logo: 'https://styles.redditmedia.com/t5_2xinb/styles/communityIcon_qqtvyeb0bj221.png',
-                    nome: 'r/OutOfTheLoop',
-                    numeroDeMembros: '3.046.177 membros',
-                },
-                {
-                    logo: 'https://styles.redditmedia.com/t5_388p4/styles/communityIcon_1xjv62tivxy61.png',
-                    nome: 'r/discordapp',
-                    numeroDeMembros: '3.046.177 membros',
-                },
-                {
-                    logo: 'https://styles.redditmedia.com/t5_2s0fe/styles/communityIcon_2cbkzwfs6kr21.png',
-                    nome: 'r/Twitch',
-                    numeroDeMembros: '3.046.177 membros',
-                },
-            ]
-            this.getView().setModel(new JSONModel(model), "ComunidadesPopulares")
+        _definirDadosComunidades: function (filtro) {
+            const dados = this._obterComunidades(filtro);
+            this._modeloComunidadesPopulares(dados);
         },
 
-        _definirDadosPosts: function () {
-            const model = [
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo",
-                    "text": "<strong>Lorem ipsum dolor sit amet</strong>, <em>consetetur sadipscing elitr</em>, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, <a href='http://www.sap.com'>sed diam voluptua</a>. At vero eos et accusam et justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod <strong>tempor invidunt ut labore et dolore magna</strong> aliquyam erat, sed diam voluptua. <em>At vero eos et accusam et justo</em> duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, seddiamnonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, <u>sed diam nonumy eirmod tempor invidunt ut labore</u> et dolore magna aliquyam erat, sed diam voluptua. <strong>At vero eos et accusam</strong> et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod <a href='//www.sap.com'>tempor invidunt</a> ut labore et dolore magna aliquyam erat, sed diam voluptua. <em>At vero eos et accusam</em> et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
-                    "actions": [
-                        {
-                            "Text": "Delete",
-                            "Icon": "sap-icon://delete",
-                            "Key": "delete"
-                        },
-                        {
-                            "Text": "Share",
-                            "Icon": "sap-icon://share-2",
-                            "Key": "share"
-                        },
-                        {
-                            "Text": "Edit",
-                            "Icon": "sap-icon://edit",
-                            "Key": "edit"
-                        }
-                    ]
+        _definirDadosDaTela: function () {
+            const dados = {
+                filtroOrdenar: {
+                    text: this.obterTextoI18N('filtroOrdenarPor')
                 },
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo 2",
-                    "text": "Lorem ipsum &gt;dolor ~~ggggg^1~~ sit <a href='http://www.sap.com'></a>, consetetur sadipscing elitr, <em>sed diam</em> nonumy <strong>eirmod tempor</strong> invidunt ut labore"
+                filtroLocalizacao: {
+                    text: this.obterTextoI18N('filtoLocalizacao')
                 },
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo 2",
-                    "text": "Lorem ipsum &gt;dolor ~~ggggg^1~~ sit <a href='http://www.sap.com'></a>, consetetur sadipscing elitr, <em>sed diam</em> nonumy <strong>eirmod tempor</strong> invidunt ut labore"
-                },
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo 2",
-                    "text": "Lorem ipsum &gt;dolor ~~ggggg^1~~ sit <a href='http://www.sap.com'></a>, consetetur sadipscing elitr, <em>sed diam</em> nonumy <strong>eirmod tempor</strong> invidunt ut labore"
-                },
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo 2",
-                    "text": "Lorem ipsum &gt;dolor ~~ggggg^1~~ sit <a href='http://www.sap.com'></a>, consetetur sadipscing elitr, <em>sed diam</em> nonumy <strong>eirmod tempor</strong> invidunt ut labore"
-                },
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo 2",
-                    "text": "Lorem ipsum &gt;dolor ~~ggggg^1~~ sit <a href='http://www.sap.com'></a>, consetetur sadipscing elitr, <em>sed diam</em> nonumy <strong>eirmod tempor</strong> invidunt ut labore"
-                },
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo 2",
-                    "text": "Lorem ipsum &gt;dolor ~~ggggg^1~~ sit <a href='http://www.sap.com'></a>, consetetur sadipscing elitr, <em>sed diam</em> nonumy <strong>eirmod tempor</strong> invidunt ut labore"
-                },
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo 2",
-                    "text": "Lorem ipsum &gt;dolor ~~ggggg^1~~ sit <a href='http://www.sap.com'></a>, consetetur sadipscing elitr, <em>sed diam</em> nonumy <strong>eirmod tempor</strong> invidunt ut labore"
-                },
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo 2",
-                    "text": "Lorem ipsum &gt;dolor ~~ggggg^1~~ sit <a href='http://www.sap.com'></a>, consetetur sadipscing elitr, <em>sed diam</em> nonumy <strong>eirmod tempor</strong> invidunt ut labore"
-                },
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo 2",
-                    "text": "Lorem ipsum &gt;dolor ~~ggggg^1~~ sit <a href='http://www.sap.com'></a>, consetetur sadipscing elitr, <em>sed diam</em> nonumy <strong>eirmod tempor</strong> invidunt ut labore"
-                },
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo 2",
-                    "text": "Lorem ipsum &gt;dolor ~~ggggg^1~~ sit <a href='http://www.sap.com'></a>, consetetur sadipscing elitr, <em>sed diam</em> nonumy <strong>eirmod tempor</strong> invidunt ut labore"
-                },
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo 2",
-                    "text": "Lorem ipsum &gt;dolor ~~ggggg^1~~ sit <a href='http://www.sap.com'></a>, consetetur sadipscing elitr, <em>sed diam</em> nonumy <strong>eirmod tempor</strong> invidunt ut labore"
-                },
-                {
-                    "numbersLikes": "15 mil",
-                    "numberComments": "10 mil",
-                    "sender": "George Washington",
-                    "avatar": "https://styles.redditmedia.com/t5_446kys/styles/communityIcon_a7690j16och91.png?width=48&height=48&frame=1&auto=webp&crop=48:48,smart&s=7f373823fa3432cce30bb7d0cca3741655e7dd68",
-                    "time": "21",
-                    "info": "Reply",
-                    "timestamp": "March 04 2013",
-                    "title": "Titulo exemplo 2",
-                    "text": "Lorem ipsum &gt;dolor ~~ggggg^1~~ sit <a href='http://www.sap.com'></a>, consetetur sadipscing elitr, <em>sed diam</em> nonumy <strong>eirmod tempor</strong> invidunt ut labore"
-                },
-            ]
+                modeloPosts: {
+                    icon: 'sap-icon://header'
+                }
+            };
+            this._modeloDadosDaTela(dados);
+        },
+        //#endregion
 
-            this.getView().setModel(new JSONModel(model), "posts")
+        //#region Realiza requisições ao servidor
+        _obterPosts: function (assunto, ordem, localizacao) {
+            return RepositorioPosts.obterTodos();
         },
 
-        aoClicarNaAbaComSubMenus: function (evento) {
-            var novoValor = !evento.getParameter('item').getExpanded()
-            evento.getParameter('item').setExpanded(novoValor)
-        }
+        _obterComunidades: function (filtro) {
+            return RepositorioComunidades.obterTodos();
+        },
+        //#endregion
     });
 });

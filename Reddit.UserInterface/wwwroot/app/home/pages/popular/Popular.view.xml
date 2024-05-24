@@ -5,6 +5,7 @@
     xmlns:l="sap.ui.layout"
     xmlns:cards="sap.f.cards"
     xmlns:grid="sap.ui.layout.cssgrid"
+    controllerName="reddit.app.home.pages.popular.Popular"
     xmlns:mvc="sap.ui.core.mvc">
     <ScrollContainer
         height="100%"
@@ -97,46 +98,61 @@
                 backgroundDesign="Transparent"
                 class="painelFixo">
                 <HBox>
-                    <MenuButton type="Transparent" text="Em destaque">
+                    <MenuButton type="Transparent" text="{dadosDaTela>/filtroOrdenar/text}">
                         <menu>
                             <Menu>
-                                <MenuItem text="Ordenar por" />
-                                <MenuItem text="Melhores" />
-                                <MenuItem text="Em destaque" />
-                                <MenuItem text="Mais novos" />
-                                <MenuItem text="Mais votados" />
-                                <MenuItem text="Mais votados" />
-                                <MenuItem text="Em ascensão" />
+                                <MenuItem press="aoClicarEmOrdenarPor"
+                                    text="{i18n>filtroOrdenarPor.Melhores}" />
+                                <MenuItem press="aoClicarEmOrdenarPor"
+                                    text="{i18n>filtroOrdenarPor.EmDestaque}" />
+                                <MenuItem press="aoClicarEmOrdenarPor"
+                                    text="{i18n>filtroOrdenarPor.MaisNovos}" />
+                                <MenuItem press="aoClicarEmOrdenarPor"
+                                    text="{i18n>filtroOrdenarPor.MaisVotados}" />
+                                <MenuItem press="aoClicarEmOrdenarPor"
+                                    text="{i18n>filtroOrdenarPor.EmAscensao}" />
                             </Menu>
                         </menu>
                     </MenuButton>
 
-                    <MenuButton type="Transparent" text="Todos os lugares">
+                    <MenuButton type="Transparent" text="{dadosDaTela>/filtroLocalizacao/text}">
                         <menu>
                             <Menu>
-                                <MenuItem text="Ordenar por" />
-                                <MenuItem text="Brasil" />
-                                <MenuItem text="Estados Unidos" />
-                                <MenuItem text="México" />
-                                <MenuItem text="El Salvador" />
-                                <MenuItem text="China" />
-                                <MenuItem text="Japão" />
+                                <MenuItem press="aoClicarEmOrdenarPorLocalizaca"
+                                    text="{i18n>filtoLocalizacao.Brasil}" />
+                                <MenuItem press="aoClicarEmOrdenarPorLocalizaca"
+                                    text="{i18n>filtoLocalizacao.EstadosUnidos}" />
+                                <MenuItem press="aoClicarEmOrdenarPorLocalizaca"
+                                    text="{i18n>filtoLocalizacao.Mexico}" />
+                                <MenuItem press="aoClicarEmOrdenarPorLocalizaca"
+                                    text="{i18n>filtoLocalizacao.China}" />
+                                <MenuItem press="aoClicarEmOrdenarPorLocalizaca"
+                                    text="{i18n>filtoLocalizacao.Japao}" />
                             </Menu>
                         </menu>
                     </MenuButton>
 
-                    <MenuButton type="Transparent" icon="sap-icon://bullet-text">
+                    <MenuButton type="Transparent" icon="{dadosDaTela>/modeloPosts/icon}">
                         <menu>
                             <Menu>
-                                <MenuItem text="Cartões" icon="sap-icon://header" />
-                                <MenuItem text="Compactada" icon="sap-icon://filter-fields" />
+                                <MenuItem
+                                    text="{i18n>modeloPost.Cartoes}"
+                                    icon="sap-icon://header"
+                                    press="aoClicarEmPostModeloCartao" />
+                                <MenuItem
+                                    text="{i18n>modeloPost.Compactada}"
+                                    icon="sap-icon://filter-fields"
+                                    press="aoClicarEmPostModeloCompactada" />
                             </Menu>
                         </menu>
                     </MenuButton>
                 </HBox>
                 <mvc:XMLView viewName="reddit.app.home.fragments.Postagens" />
             </Panel>
-            <mvc:XMLView class="painelFixo" id="popular" viewName="reddit.app.home.fragments.PainelFlutuante"/>
+            <mvc:XMLView
+                class="painelFixo"
+                id="popular"
+                viewName="reddit.app.home.fragments.PainelFlutuante" />
         </HBox>
     </ScrollContainer>
 </mvc:View>
