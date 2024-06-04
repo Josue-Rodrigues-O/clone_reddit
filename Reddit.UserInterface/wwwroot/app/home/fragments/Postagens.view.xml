@@ -17,7 +17,7 @@
         <f:GridListItem
             class="sapUiSmallMarginBottom">
             <f:layoutData>
-                <grid:ResponsiveColumnItemLayoutData columns="12" rows="1" />
+                <grid:ResponsiveColumnItemLayoutData columns="10" rows="1" />
             </f:layoutData>
             <VBox class="sapUiSmallMargin">
                 <layoutData>
@@ -36,7 +36,7 @@
                                 displaySize="XS"
                                 showBorder="true"
                                 press="onPress" />
-                            <Text text="{posts>sender} - há {posts>time}h" />
+                            <Text text="{posts>autor} - {posts>tempoDecorrido}h" />
                         </HBox>
                         <HBox>
                             <Button class="sapUiTinyMarginEnd" type="Emphasized"
@@ -44,18 +44,28 @@
                             <Button type="Transparent" icon="sap-icon://overflow" />
                         </HBox>
                     </HBox>
-                    <Title class="sapUiTinyMarginBottom" text="{posts>title}"
+                    <Title class="sapUiTinyMarginBottom" text="{posts>titulo}"
                         wrapping="true" />
-                    <FormattedText htmlText="{posts>text}" />
+                    <FormattedText htmlText="{posts>texto}" />
+                    <Carousel
+                        loop="true"
+                        pages="{
+                                path: 'posts>carrossel'
+                            }">
+                        <customLayout>
+                            <CarouselLayout visiblePagesCount="1" />
+                        </customLayout>
+                        <Image height="65vh" src="{posts>imagem}" />
+                    </Carousel>
                 </VBox>
                 <HBox
                     alignItems="Center">
                     <Button type="Transparent" icon="sap-icon://thumb-up"
-                        text="{posts>numbersLikes}" />
+                        text="{posts>numeroDeLikes}" />
                     <Button class="sapUiTinyMarginEnd" type="Transparent"
                         icon="sap-icon://thumb-down" />
                     <Button type="Transparent" class="sapUiTinyMarginEnd"
-                        icon="sap-icon://post" text="{posts>numberComments}" />
+                        icon="sap-icon://post" text="{posts>numeroDeComentarios}" />
                     <Button type="Transparent" class="sapUiTinyMarginEnd"
                         icon="https://www.redditstatic.com/marketplace-assets/v1/core/awards/take_my_coins_v1_40.png"
                         text="1" />

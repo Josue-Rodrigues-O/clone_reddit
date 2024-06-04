@@ -15,81 +15,27 @@
         <Carousel
             loop="true"
             backgroundDesign="Transparent"
-            pageIndicatorBackgroundDesign="Transparent" showPageIndicator="false">
+            pageIndicatorBackgroundDesign="Transparent"
+            showPageIndicator="false"
+            pages="{
+				path: 'carrossel>/'
+			}">
             <customLayout>
                 <CarouselLayout visiblePagesCount="4" />
             </customLayout>
-
             <GenericTile
                 frameType="TwoThirds"
                 class="genericTile"
                 width="100%"
-                backgroundImage="{images>/pngBannerTeste}">
-                <TileContent footerColor="None" footer="r/Games e muito mais">
+                backgroundImage="{carrossel>imagem}">
+                <TileContent footerColor="None" footer="{carrossel>comunidade}">
                     <VBox>
-                        <Title class="title" titleStyle="H4" text="Playstation new CEO" />
+                        <Title class="title" titleStyle="H4" text="{carrossel>titulo}" />
                         <Text wrapping="false" class="title"
-                            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
+                            text="{carrossel>texto}" />
                     </VBox>
                 </TileContent>
             </GenericTile>
-
-            <GenericTile
-                frameType="TwoThirds"
-                class="genericTile"
-                width="100%"
-                backgroundImage="{images>/pngBannerTeste}">
-                <TileContent footerColor="None" footer="r/Games e muito mais">
-                    <VBox>
-                        <Title class="title" titleStyle="H4" text="Playstation new CEO" />
-                        <Text wrapping="false" class="title"
-                            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
-                    </VBox>
-                </TileContent>
-            </GenericTile>
-
-            <GenericTile
-                frameType="TwoThirds"
-                class="genericTile"
-                width="100%"
-                backgroundImage="{images>/pngBannerTeste}">
-                <TileContent footerColor="None" footer="r/Games e muito mais">
-                    <VBox>
-                        <Title class="title" titleStyle="H4" text="Playstation new CEO" />
-                        <Text wrapping="false" class="title"
-                            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
-                    </VBox>
-                </TileContent>
-            </GenericTile>
-
-            <GenericTile
-                frameType="TwoThirds"
-                class="genericTile"
-                width="100%"
-                backgroundImage="{images>/pngBannerTeste}">
-                <TileContent footerColor="None" footer="r/Games e muito mais">
-                    <VBox>
-                        <Title class="title" titleStyle="H4" text="Playstation new CEO" />
-                        <Text wrapping="false" class="title"
-                            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
-                    </VBox>
-                </TileContent>
-            </GenericTile>
-
-            <GenericTile
-                frameType="TwoThirds"
-                class="genericTile"
-                width="100%"
-                backgroundImage="{images>/pngBannerTeste}">
-                <TileContent footerColor="None" footer="r/Games e muito mais">
-                    <VBox>
-                        <Title class="title" titleStyle="H4" text="Playstation new CEO" />
-                        <Text wrapping="false" class="title"
-                            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
-                    </VBox>
-                </TileContent>
-            </GenericTile>
-
         </Carousel>
         <HBox
             class="sapUiSmallMarginTop"

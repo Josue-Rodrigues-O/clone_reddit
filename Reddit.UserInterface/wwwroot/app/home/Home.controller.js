@@ -24,6 +24,7 @@ sap.ui.define([
             this._definirDadosComunidades();
             this._definirDadosPosts();
             this._definirDadosDaTela();
+            this._definirDadosDoCarrossel();
         },
 
         aoSelecionarUmItemDoMenuLateral: function (evento) {
@@ -67,6 +68,12 @@ sap.ui.define([
             return dados
                 ? this.modelo("dadosDaTela", new JSONModel(dados))
                 : this.modelo("dadosDaTela");
+        },
+        
+        _modeloCarrossel: function (dados) {
+            return dados
+                ? this.modelo("carrossel", new JSONModel(dados))
+                : this.modelo("carrossel");
         },
         //#endregion
 
@@ -454,6 +461,11 @@ sap.ui.define([
             };
             this._modeloDadosDaTela(dados);
         },
+
+        _definirDadosDoCarrossel: function () {
+            const dados = this._obterAnuncios();
+            this._modeloCarrossel(dados);
+        },
         //#endregion
 
         //#region Realiza requisições ao servidor
@@ -463,6 +475,10 @@ sap.ui.define([
 
         _obterComunidades: function (filtro) {
             return RepositorioComunidades.obterTodos();
+        },
+        
+        _obterAnuncios: function (filtro) {
+            return RepositorioPosts.obterPostsEmAlta();
         },
         //#endregion
     });

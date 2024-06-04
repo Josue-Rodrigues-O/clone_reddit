@@ -2,7 +2,7 @@ sap.ui.define([
 ], function () {
     'use strict';
 
-    const URL = '/api/Posts';
+    const URL = '/api/Comunidades';
 
     return {
         obterTodos: function (filtro) {

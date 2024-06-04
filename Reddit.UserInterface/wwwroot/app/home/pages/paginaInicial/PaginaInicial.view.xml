@@ -1,4 +1,5 @@
 <mvc:View
+    controllerName="reddit.app.home.pages.paginaInicial.PaginaInicial"
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc">
@@ -12,33 +13,24 @@
             <Panel
                 backgroundDesign="Transparent"
                 class="painelFixo">
-                <HBox>
-                    <MenuButton type="Transparent" text="Em destaque">
-                        <menu>
-                            <Menu>
-                                <MenuItem text="Ordenar por" />
-                                <MenuItem text="Melhores" />
-                                <MenuItem text="Em destaque" />
-                                <MenuItem text="Mais novos" />
-                                <MenuItem text="Mais votados" />
-                                <MenuItem text="Mais votados" />
-                                <MenuItem text="Em ascensão" />
-                            </Menu>
-                        </menu>
-                    </MenuButton>
-
-                    <MenuButton type="Transparent" icon="sap-icon://bullet-text">
-                        <menu>
-                            <Menu>
-                                <MenuItem text="Cartões" icon="sap-icon://header" />
-                                <MenuItem text="Compactada" icon="sap-icon://filter-fields" />
-                            </Menu>
-                        </menu>
-                    </MenuButton>
-                </HBox>
+                <MenuButton type="Transparent" icon="{dadosDaTela>/modeloPosts/icon}">
+                    <menu>
+                        <Menu>
+                            <MenuItem
+                                text="{i18n>modeloPost.Cartoes}"
+                                icon="sap-icon://header"
+                                press="aoClicarEmPostModeloCartao" />
+                            <MenuItem
+                                text="{i18n>modeloPost.Compactada}"
+                                icon="sap-icon://filter-fields"
+                                press="aoClicarEmPostModeloCompactada" />
+                        </Menu>
+                    </menu>
+                </MenuButton>
                 <mvc:XMLView viewName="reddit.app.home.fragments.Postagens" />
             </Panel>
-            <mvc:XMLView class="painelFixo" id="popular" viewName="reddit.app.home.fragments.PainelFlutuante"/>
+            <mvc:XMLView class="painelFixo" id="popular"
+                viewName="reddit.app.home.fragments.PainelFlutuante" />
         </HBox>
     </ScrollContainer>
 </mvc:View>
