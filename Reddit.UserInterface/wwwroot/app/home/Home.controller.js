@@ -69,7 +69,7 @@ sap.ui.define([
                 ? this.modelo("dadosDaTela", new JSONModel(dados))
                 : this.modelo("dadosDaTela");
         },
-        
+
         _modeloCarrossel: function (dados) {
             return dados
                 ? this.modelo("carrossel", new JSONModel(dados))
@@ -476,7 +476,7 @@ sap.ui.define([
         _obterComunidades: function (filtro) {
             return RepositorioComunidades.obterTodos();
         },
-        
+
         _obterAnuncios: function (filtro) {
             return RepositorioPosts.obterPostsEmAlta();
         },
