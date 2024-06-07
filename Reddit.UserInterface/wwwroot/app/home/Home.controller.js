@@ -79,8 +79,9 @@ sap.ui.define([
 
         //#region Setters
         _definirDadosPosts: function (assunto, ordem, localizacao) {
-            const dados = this._obterPosts(assunto, ordem, localizacao);
-            this._modeloPosts(dados);
+            this._obterPosts(assunto, ordem, localizacao)
+                .then(response => response.json())
+                .then(dados => this._modeloPosts(dados));
         },
 
         _definirDadosImagensDoSite: function () {
@@ -463,8 +464,9 @@ sap.ui.define([
         },
 
         _definirDadosDoCarrossel: function () {
-            const dados = this._obterAnuncios();
-            this._modeloCarrossel(dados);
+            this._obterAnuncios()
+            .then(response => response.json())
+            .then(dados => this._modeloCarrossel(dados));
         },
         //#endregion
 

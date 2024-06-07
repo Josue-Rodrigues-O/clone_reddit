@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Reddit.Domain\Reddit.Domain.csproj" />
-    <ProjectReference Include="..\Reddit.Services\Reddit.Services.csproj" />
   </ItemGroup>
 
 </Project>
