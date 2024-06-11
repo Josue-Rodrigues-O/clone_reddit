@@ -1,6 +1,7 @@
 .genericTile {
 	color: #fff;
-	text-shadow: -5px -2px 10px black;
+	font-weight: bolder;
+	/* text-shadow: -15px 1px 20px black; */
 }
 
 .painelFixo {
@@ -9,6 +10,6 @@
 }
 
 .titleCarrossel {
-	background-color: rgba(0, 0, 0, 0.2);
+	background: linear-gradient(0deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%);
 	color: #fff;
 }

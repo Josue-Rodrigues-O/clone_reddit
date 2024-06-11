@@ -28,14 +28,13 @@
                 class="genericTile"
                 width="100%"
                 backgroundImage="{carrossel>carrossel/0/image}">
-                <TileContent class="titleCarrossel" footerColor="None" footer="{carrossel>comunidade}">
+                <TileContent class="titleCarrossel" footerColor="None"
+                    footer="{carrossel>comunidade}">
                     <VBox>
                         <Title titleStyle="H4" text="{carrossel>titulo}" />
-                        <!-- <HBox>
-                            <FormattedText
-                                wrapping="false"
-                                htmlText="{carrossel>texto}" />
-                        </HBox> -->
+                        <Text
+                            wrapping="false"
+                            text="{carrossel>texto}" />
                     </VBox>
                 </TileContent>
             </GenericTile>
