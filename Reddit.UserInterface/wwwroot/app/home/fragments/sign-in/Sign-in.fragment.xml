@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog
+        id="id_dialog_sing_in">
+        <customHeader>
+            <Bar>
+                <contentRight>
+                    <Button icon="sap-icon://decline" press=".aoClicarEmFecharModalSignIn" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+    </Dialog>
+</core:FragmentDefinition>

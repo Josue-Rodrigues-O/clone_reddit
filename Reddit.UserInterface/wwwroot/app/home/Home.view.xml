@@ -28,8 +28,8 @@
 				<HBox alignItems="Center">
 					<Button type="Neutral" icon="sap-icon://qr-code" text="{i18n>BarraSuperior.BaixarApp}"
 						class="sapUiTinyMarginEnd" />
-					<Button type="Emphasized" text="{i18n>BarraSuperior.Entrar}" class="sapUiTinyMarginEnd" />
-					<Button icon="sap-icon://overflow" />
+					<Button type="Emphasized" text="{i18n>BarraSuperior.Entrar}" press="aoClicarEmEntrar" class="sapUiTinyMarginEnd" />
+					<Button id="button" icon="sap-icon://overflow" press="onPress" ariaHasPopup="Menu"/>
 				</HBox>
 			</tnt:ToolHeader>
 		</tnt:header>

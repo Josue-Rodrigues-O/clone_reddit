@@ -4,8 +4,9 @@ sap.ui.define([
     "sap/m/Menu",
     "sap/m/MenuItem",
     "reddit/repositories/RepositorioPosts",
-    "reddit/repositories/RepositorioComunidades"
-], function (BaseControler, JSONModel, Menu, MenuItem, RepositorioPosts, RepositorioComunidades) {
+    "reddit/repositories/RepositorioComunidades",
+    'sap/ui/core/Fragment',
+], function (BaseControler, JSONModel, Menu, MenuItem, RepositorioPosts, RepositorioComunidades, Fragment) {
     "use strict";
 
     const PARAMETRO_ITEM = "item";
@@ -36,6 +37,71 @@ sap.ui.define([
         aoClicarNaAbaComSubMenus: function (evento) {
             var novoValor = !evento.getParameter(PARAMETRO_ITEM).getExpanded();
             evento.getParameter(PARAMETRO_ITEM).setExpanded(novoValor);
+        },
+
+        onPress: function () {
+            var oView = this.getView(),
+                oButton = oView.byId("button");
+
+            if (!this._oMenuFragment) {
+                this._oMenuFragment = Fragment.load({
+                    id: oView.getId(),
+                    name: "reddit.app.home.fragments.MenuBarraSuperior",
+                    controller: this
+                }).then(function(oMenu) {
+                    oMenu.openBy(oButton);
+                    this._oMenuFragment = oMenu;
+                    return this._oMenuFragment;
+                }.bind(this));
+            } else {
+                this._oMenuFragment.openBy(oButton);
+            }
+        },
+
+        onMenuAction: function(oEvent) {
+            var oItem = oEvent.getParameter("item"),
+                sItemPath = "";
+
+            while (oItem instanceof MenuItem) {
+                sItemPath = oItem.getText() + " > " + sItemPath;
+                oItem = oItem.getParent();
+            }
+
+            sItemPath = sItemPath.substr(0, sItemPath.lastIndexOf(" > "));
+
+            MessageToast.show("Action triggered on item: " + sItemPath);
+        },
+
+        aoClicarEmEntrar: async function () {
+            this.oDialog ??= await this.loadFragment({
+                name: "reddit.app.home.fragments.sign-in.Sign-in"
+            });
+
+            this.oDialog.open();
+        },
+
+        aoClicarEmCadastrar: async function () {
+            this.oDialog ??= await this.loadFragment({
+                name: "reddit.app.home.fragments.sign-up.Sign-up"
+            });
+
+            this.oDialog.open();
+        },
+
+        aoClicarEmAnuncieNoReddit: function () {
+            console.log("aoClicarEmAnuncieNoReddit");
+        },
+        
+        aoClicarEmComprarAvataresColecionaveis: function () {
+            console.log("aoClicarEmComprarAvataresColecionaveis");
+        },
+
+        aoClicarEmFecharModalSignIn: function () {
+            this.byId("id_dialog_sing_in").close();
+        },
+        
+        aoClicarEmFecharModalSignUp: function () {
+            this.byId("id_dialog_sing_up").close();
         },
         //#endregion
 
@@ -88,7 +154,8 @@ sap.ui.define([
             const dados = {
                 svgImagemLogo: sap.ui.require.toUrl("reddit/resources/images/imagem_logo.svg"),
                 svgTextoLogo: sap.ui.require.toUrl("reddit/resources/images/texto_logo.svg"),
-                pngBannerTeste: sap.ui.require.toUrl("reddit/resources/images/banner_teste.jpg")
+                pngBannerTeste: sap.ui.require.toUrl("reddit/resources/images/banner_teste.jpg"),
+                svgIconApple: sap.ui.require.toUrl("reddit/resources/images/icon_apple.svg")
             };
 
             this._modeloImagensDoSite(dados);
@@ -465,8 +532,8 @@ sap.ui.define([
 
         _definirDadosDoCarrossel: function () {
             this._obterAnuncios()
-            .then(response => response.json())
-            .then(dados => this._modeloCarrossel(dados));
+                .then(response => response.json())
+                .then(dados => this._modeloCarrossel(dados));
         },
         //#endregion
 

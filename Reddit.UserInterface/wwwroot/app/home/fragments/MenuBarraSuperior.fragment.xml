@@ -1,0 +1,9 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Menu>
+        <MenuItem press="aoClicarEmCadastrar" icon="sap-icon://customer" text="Cadastre-se" />
+        <MenuItem press="aoClicarEmAnuncieNoReddit" icon="sap-icon://leads" text="Anuncie no Reddit" />
+        <MenuItem press="aoClicarEmComprarAvataresColecionaveis" icon="sap-icon://retail-store" text="Comprar avatares colecionáveis" />
+    </Menu>
+</core:FragmentDefinition>

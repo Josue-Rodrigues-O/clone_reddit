@@ -46,6 +46,17 @@ sap.ui.define([
             const MODELO_I18N = 'i18n';
             const recursos_i18n = this.getOwnerComponent().getModel(MODELO_I18N).getResourceBundle();
             return recursos_i18n.getText(chaveI18N);
-        }, 
+        },
+
+        /**
+         * @param {string}
+         * @param {Object} [parameters]
+         * @returns {routeName sap.ui.core.routing.Router}
+         */
+        navegarPara: function (routeName, parameters = null) {
+            return this
+                .getRouter()
+                .navTo(routeName, parameters);
+        },
     });
 });
