@@ -13,9 +13,12 @@ sap.ui.define([
     const NAMESPACE = "reddit.app.home.Home";
 
     return BaseControler.extend(NAMESPACE, {
+        dialogoSignIn: null,
+        dialogoSignUp: null,
+
         //#region Eventos
         onInit: function () {
-            const rotaListagem = "home";
+            const rotaListagem = 'home';
             this.vincularRota(rotaListagem, this._aoCoincidirRota);
         },
 
@@ -48,7 +51,7 @@ sap.ui.define([
                     id: oView.getId(),
                     name: "reddit.app.home.fragments.MenuBarraSuperior",
                     controller: this
-                }).then(function(oMenu) {
+                }).then(function (oMenu) {
                     oMenu.openBy(oButton);
                     this._oMenuFragment = oMenu;
                     return this._oMenuFragment;
@@ -58,7 +61,7 @@ sap.ui.define([
             }
         },
 
-        onMenuAction: function(oEvent) {
+        onMenuAction: function (oEvent) {
             var oItem = oEvent.getParameter("item"),
                 sItemPath = "";
 
@@ -73,35 +76,27 @@ sap.ui.define([
         },
 
         aoClicarEmEntrar: async function () {
-            this.oDialog ??= await this.loadFragment({
-                name: "reddit.app.home.fragments.sign-in.Sign-in"
-            });
-
-            this.oDialog.open();
+            this._criarEAbrirModal('dialogoSignIn', 'reddit.app.home.fragments.sign-in.Sign-in');
         },
 
         aoClicarEmCadastrar: async function () {
-            this.oDialog ??= await this.loadFragment({
-                name: "reddit.app.home.fragments.sign-up.Sign-up"
-            });
-
-            this.oDialog.open();
+            this._criarEAbrirModal('dialogoSignUp', 'reddit.app.home.fragments.sign-up.Sign-up');
         },
 
         aoClicarEmAnuncieNoReddit: function () {
             console.log("aoClicarEmAnuncieNoReddit");
         },
-        
+
         aoClicarEmComprarAvataresColecionaveis: function () {
             console.log("aoClicarEmComprarAvataresColecionaveis");
         },
 
         aoClicarEmFecharModalSignIn: function () {
-            this.byId("id_dialog_sing_in").close();
+            this.dialogoSignIn.then((dialogo) => dialogo.close())
         },
-        
+
         aoClicarEmFecharModalSignUp: function () {
-            this.byId("id_dialog_sing_up").close();
+            this.dialogoSignUp.then((dialogo) => dialogo.close())
         },
         //#endregion
 
@@ -548,6 +543,30 @@ sap.ui.define([
 
         _obterAnuncios: function (filtro) {
             return RepositorioPosts.obterPostsEmAlta();
+        },
+        //#endregion
+
+        //#region Métodos privados
+        _criarEAbrirModal: async function (modalObjectName, modalXMLName) {
+            let modalExiste = Boolean(this[modalObjectName])
+            let modalFechado;
+
+            if (modalExiste) {
+                await this[modalObjectName]
+                    .then((modal) => {
+                        if (modal.isDestroyed() != undefined) {
+                            return modalFechado = modal.isDestroyed()
+                        }
+                        return modalFechado = modal.isOpen()
+                    });
+            }
+
+            if (!modalExiste || modalFechado)
+                this[modalObjectName] = this.loadFragment({
+                    name: modalXMLName
+                });
+
+            this[modalObjectName].then((dialogo) => dialogo.open());
         },
         //#endregion
     });

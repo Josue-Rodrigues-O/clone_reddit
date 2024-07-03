@@ -7,7 +7,7 @@
         <VBox alignItems="Center" justifyContent="SpaceBetween" width="26rem" height="35rem"
             class="sapUiLargeMarginBottom sapUiLargeMarginBegin sapUiLargeMarginEnd">
             <HBox alignItems="Center" justifyContent="SpaceBetween" width="29rem"
-                class="sapUiLargeMarginTop">
+                class="sapUiSmallMarginTop">
                 <FormattedText
                     htmlText="&lt;h3&gt;Cadastre-se&lt;/h2&gt;" />
                 <Button type="Transparent" icon="sap-icon://decline"
@@ -21,7 +21,7 @@
                 <CheckBox
                     wrapping="true"
                     class="sapUiNoContentPadding"
-                    width="26rem"
+                    width="27.5rem"
                     text="Concordo em receber emails sobre coisas legais acontecendo no Reddit"/>
                 <Button width="29rem" text="Continuar com o Google" />
                 <Button width="29rem" text="Continuar com Apple" />

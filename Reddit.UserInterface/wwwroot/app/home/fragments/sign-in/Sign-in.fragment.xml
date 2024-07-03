@@ -2,13 +2,42 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
     <Dialog
-        id="id_dialog_sing_in">
-        <customHeader>
-            <Bar>
-                <contentRight>
-                    <Button icon="sap-icon://decline" press=".aoClicarEmFecharModalSignIn" />
-                </contentRight>
-            </Bar>
-        </customHeader>
+        id="id_dialog_sing_in"
+        showHeader="false">
+        <VBox alignItems="Center" justifyContent="SpaceBetween" width="26rem" height="35rem"
+            class="sapUiLargeMarginBottom sapUiLargeMarginBegin sapUiLargeMarginEnd">
+            <HBox alignItems="Center" justifyContent="SpaceBetween" width="29rem"
+                class="sapUiSmallMarginTop">
+                <FormattedText
+                    htmlText="&lt;h3&gt;Entrar&lt;/h2&gt;" />
+                <Button type="Transparent" icon="sap-icon://decline"
+                    press=".aoClicarEmFecharModalSignIn" />
+            </HBox>
+            <VBox alignItems="Center"
+                class="sapUiTinyMarginTop sapUiLargeMarginBottom sapUiLargeMarginBegin sapUiLargeMarginEnd">
+                <FormattedText
+                    width="29rem"
+                    htmlText="Ao continuar, você concorda com nosso &lt;a href='http://www.sap.com'&gt;Contrato de Usuário&lt;/a&gt; e reconhece que compreende nossa &lt;a href='http://www.sap.com'&gt;Política de Privacidade&lt;/a&gt;." />
+                <CheckBox
+                    wrapping="true"
+                    class="sapUiNoContentPadding"
+                    width="27.5rem"
+                    text="Concordo em receber emails sobre coisas legais acontecendo no Reddit" />
+                <Button width="29rem" text="Continuar com o Google" />
+                <Button width="29rem" text="Continuar com Apple" />
+                <Text class="sapUiSmallMargin" text="OU" />
+                <Input width="29rem" required="true" placeholder="Email" />
+                <Input width="29rem" required="true" placeholder="Senha" />
+                <VBox width="29rem" class="sapUiLargeMarginTop">
+                    <Link class="sapUiTinyMarginBottom" text="Esqueceu a senha?" />
+                    <FormattedText
+                        htmlText="Primeira vez usando o Reddit?  &lt;a href='http://www.sap.com'&gt;Cadastre-se&lt;/a&gt;" />
+                </VBox>
+            </VBox>
+            <VBox alignItems="Center"
+                class=" sapUiLargeMarginBegin sapUiLargeMarginEnd">
+                <Button width="29rem" text="Entrar" />
+            </VBox>
+        </VBox>
     </Dialog>
 </core:FragmentDefinition>
